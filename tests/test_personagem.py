@@ -1,4 +1,5 @@
 from src.guerreiro import Guerreiro
+from src.inimigo import Inimigo
 
 
 def test_guerreiro_esta_vivo():
@@ -19,5 +20,9 @@ def test_personagem_morre():
 
 
 def test_guerreiro_ataca():
-    # TODO
-    pass
+    guerreiro = Guerreiro("Arthur")
+    inimigo = Inimigo("Goblin", vida=100, ataque=15, defesa=5)
+
+    guerreiro.atacar(inimigo)
+
+    assert inimigo.vida == 85
