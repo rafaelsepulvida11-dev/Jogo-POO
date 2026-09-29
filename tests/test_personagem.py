@@ -26,3 +26,12 @@ def test_guerreiro_ataca():
     guerreiro.atacar(inimigo)
 
     assert inimigo.vida == 85
+
+
+def test_inimigo_ataca_jogador():
+    inimigo = Inimigo("Goblin", vida=100, ataque=25, defesa=5)
+    jogador = Guerreiro("Arthur")
+
+    inimigo.atacar(jogador)
+
+    assert jogador.vida == 110
