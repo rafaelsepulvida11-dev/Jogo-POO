@@ -1,6 +1,7 @@
 from guerreiro import Guerreiro
 from inimigo import Inimigo
 from batalha import Batalha
+from item import Item
 
 
 def main():
@@ -14,7 +15,8 @@ def main():
         defesa=5
     )
 
-    batalha = Batalha(jogador, inimigo)
+    pocao = Item("Poção de cura", 30)
+    batalha = Batalha(jogador, inimigo, pocao)
 
     batalha.iniciar()
 
