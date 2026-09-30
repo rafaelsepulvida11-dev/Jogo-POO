@@ -1,10 +1,13 @@
-from personagem import Personagem
+import random
+
+from src.personagem import Personagem
+
 
 class Mago(Personagem):
 
-    def __init__(self, nome):
+    def __init__(self, nome="Merlin"):
         super().__init__(
-            nome=nome,
+            nome="Merlin",
             vida=80,
             ataque=30,
             defesa=5
@@ -13,14 +16,27 @@ class Mago(Personagem):
         self.mana = 100
 
     def atacar(self, alvo):
-        # TODO: implementar ataque normal
-        pass
+        dano = self.ataque
+        print(f"{self.nome} ataca {alvo.nome} com {dano} de dano.")
+        alvo.receber_dano(dano)
 
     def usar_magia(self, alvo):
-        # TODO: implementar magia
-
-        if self.mana <= 0:
+        if self.mana < 15:
             print("O mago não possui mana suficiente.")
             return
 
-        pass
+        self.mana -= 15
+        chance = random.randint(1, 10)
+
+        if chance == 1:
+            print(f"{self.nome} errou a magia em {alvo.nome}!")
+            return
+
+        if chance >= 8:
+            dano = self.ataque * 2
+            print(f"{self.nome} lançou uma magia crítica em {alvo.nome} e causou {dano} de dano!")
+        else:
+            dano = self.ataque + 10
+            print(f"{self.nome} lançou magia em {alvo.nome} e causou {dano} de dano.")
+
+        alvo.receber_dano(dano)
