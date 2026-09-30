@@ -5,9 +5,9 @@ from src.personagem import Personagem
 
 class Mago(Personagem):
 
-    def __init__(self, nome):
+    def __init__(self, nome="Merlin"):
         super().__init__(
-            nome=nome,
+            nome="Merlin",
             vida=80,
             ataque=30,
             defesa=5

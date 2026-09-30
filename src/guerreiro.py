@@ -3,9 +3,9 @@ from src.personagem import Personagem
 
 class Guerreiro(Personagem):
 
-    def __init__(self, nome):
+    def __init__(self, nome="Arthur"):
         super().__init__(
-            nome=nome,
+            nome="Arthur",
             vida=120,
             ataque=20,
             defesa=15

@@ -17,11 +17,9 @@ def main():
     escolha = input("Opção: ")
 
     if escolha == "2":
-        nome = input("Digite o nome do mago: ") or "Merlin"
-        jogador = Mago(nome)
+        jogador = Mago()
     else:
-        nome = input("Digite o nome do guerreiro: ") or "Arthur"
-        jogador = Guerreiro(nome)
+        jogador = Guerreiro()
 
     inimigo = Inimigo(
         nome="Goblin",

@@ -18,27 +18,40 @@ class Batalha:
 
             print("\n--- AÇÕES ---")
             print("1 - Atacar")
-            print("2 - Usar magia")
-            print("3 - Usar item")
-            print("4 - Fugir")
 
-            opcao = input("Escolha uma opção: ")
+            if hasattr(self.jogador, "usar_magia"):
+                print("2 - Usar magia")
+                print("3 - Usar item")
+                print("4 - Fugir")
+                opcao = input("Escolha uma opção: ")
 
-            if opcao == "1":
-                self.jogador.atacar(self.inimigo)
-            elif opcao == "2":
-                if hasattr(self.jogador, "usar_magia"):
+                if opcao == "1":
+                    self.jogador.atacar(self.inimigo)
+                elif opcao == "2":
                     self.jogador.usar_magia(self.inimigo)
+                elif opcao == "3":
+                    print("Você usou um item, mas não há item implementado ainda.")
+                elif opcao == "4":
+                    print("Você fugiu da batalha!")
+                    return
                 else:
-                    print("Seu personagem não sabe usar magia.")
-            elif opcao == "3":
-                print("Você usou um item, mas não há item implementado ainda.")
-            elif opcao == "4":
-                print("Você fugiu da batalha!")
-                return
+                    print("Opção inválida.")
+                    continue
             else:
-                print("Opção inválida.")
-                continue
+                print("2 - Usar item")
+                print("3 - Fugir")
+                opcao = input("Escolha uma opção: ")
+
+                if opcao == "1":
+                    self.jogador.atacar(self.inimigo)
+                elif opcao == "2":
+                    print("Você usou um item, mas não há item implementado ainda.")
+                elif opcao == "3":
+                    print("Você fugiu da batalha!")
+                    return
+                else:
+                    print("Opção inválida.")
+                    continue
 
             if not self.inimigo.esta_vivo():
                 break
