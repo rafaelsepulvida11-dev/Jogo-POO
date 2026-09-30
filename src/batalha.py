@@ -1,8 +1,12 @@
+from src.item import PocaoDeVida
+
+
 class Batalha:
 
     def __init__(self, jogador, inimigo):
         self.jogador = jogador
         self.inimigo = inimigo
+        self.item = PocaoDeVida()
 
     def iniciar(self):
 
@@ -27,10 +31,14 @@ class Batalha:
 
                 if opcao == "1":
                     self.jogador.atacar(self.inimigo)
+                    if self.inimigo.esta_vivo():
+                        self.inimigo.realizar_turno(self.jogador)
                 elif opcao == "2":
                     self.jogador.usar_magia(self.inimigo)
+                    if self.inimigo.esta_vivo():
+                        self.inimigo.realizar_turno(self.jogador)
                 elif opcao == "3":
-                    print("Você usou um item, mas não há item implementado ainda.")
+                    self.item.usar(self.jogador)
                 elif opcao == "4":
                     print("Você fugiu da batalha!")
                     return
@@ -44,8 +52,10 @@ class Batalha:
 
                 if opcao == "1":
                     self.jogador.atacar(self.inimigo)
+                    if self.inimigo.esta_vivo():
+                        self.inimigo.realizar_turno(self.jogador)
                 elif opcao == "2":
-                    print("Você usou um item, mas não há item implementado ainda.")
+                    self.item.usar(self.jogador)
                 elif opcao == "3":
                     print("Você fugiu da batalha!")
                     return
@@ -55,8 +65,6 @@ class Batalha:
 
             if not self.inimigo.esta_vivo():
                 break
-
-            self.inimigo.atacar(self.jogador)
 
         if self.jogador.esta_vivo():
             print(f"\n{self.jogador.nome} venceu a batalha!")

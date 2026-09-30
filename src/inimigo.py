@@ -1,4 +1,5 @@
 from src.personagem import Personagem
+from src.item import PocaoDeVida
 
 
 class Inimigo(Personagem):
@@ -10,10 +11,17 @@ class Inimigo(Personagem):
             ataque=ataque,
             defesa=defesa
         )
+        self.pocao = PocaoDeVida()
 
     def atacar(self, alvo):
         print(f"{self.nome} atacou {alvo.nome}!")
         alvo.receber_dano(self.ataque)
+
+    def realizar_turno(self, alvo):
+        if self.vida <= self.vida_maxima / 2 and not self.pocao.usado:
+            self.pocao.usar(self)
+        else:
+            self.atacar(alvo)
         
 class BruxoFinalBoss(Inimigo):
     def __init__(self, nome):

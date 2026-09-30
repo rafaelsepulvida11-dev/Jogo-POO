@@ -6,6 +6,7 @@ class Personagem(ABC):
     def __init__(self, nome, vida, ataque, defesa):
         self.nome = nome
         self.vida = vida
+        self.vida_maxima = vida
         self.ataque = ataque
         self.defesa = defesa
 
