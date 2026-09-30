@@ -1,16 +1,17 @@
-from personagem import Personagem
+from src.personagem import Personagem
 
 
 class Guerreiro(Personagem):
 
-    def __init__(self, nome):
+    def __init__(self, nome="Arthur"):
         super().__init__(
-            nome=nome,
+            nome="Arthur",
             vida=120,
             ataque=20,
             defesa=15
         )
 
     def atacar(self, alvo):
-        print(f"{self.nome} atacou {alvo.nome}!")
-        alvo.receber_dano(self.ataque)
+        dano = self.ataque
+        print(f"{self.nome} ataca {alvo.nome} e causa {dano} de dano.")
+        alvo.receber_dano(dano)
