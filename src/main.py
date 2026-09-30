@@ -10,7 +10,7 @@ def main():
     inimigo = Inimigo(
         nome="Goblin",
         vida=100,
-        ataque=15,
+        ataque=20,
         defesa=5
     )
 
