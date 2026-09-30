@@ -1,4 +1,4 @@
-from personagem import Personagem
+from src.personagem import Personagem
 
 
 class Guerreiro(Personagem):
@@ -12,5 +12,6 @@ class Guerreiro(Personagem):
         )
 
     def atacar(self, alvo):
-        # TODO: implementar ataque do guerreiro
-        pass
+        dano = self.ataque
+        print(f"{self.nome} ataca {alvo.nome} e causa {dano} de dano.")
+        alvo.receber_dano(dano)

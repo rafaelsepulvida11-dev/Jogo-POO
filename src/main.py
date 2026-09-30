@@ -1,11 +1,27 @@
-from guerreiro import Guerreiro
-from inimigo import Inimigo
-from batalha import Batalha
+import os
+import sys
+
+if __package__ is None or __package__ == "":
+    sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+
+from src.batalha import Batalha
+from src.guerreiro import Guerreiro
+from src.inimigo import Inimigo
+from src.mago import Mago
 
 
 def main():
+    print("Escolha a classe do jogador:")
+    print("1 - Guerreiro")
+    print("2 - Mago")
+    escolha = input("Opção: ")
 
-    jogador = Guerreiro("Arthur")
+    if escolha == "2":
+        nome = input("Digite o nome do mago: ") or "Merlin"
+        jogador = Mago(nome)
+    else:
+        nome = input("Digite o nome do guerreiro: ") or "Arthur"
+        jogador = Guerreiro(nome)
 
     inimigo = Inimigo(
         nome="Goblin",
@@ -15,7 +31,6 @@ def main():
     )
 
     batalha = Batalha(jogador, inimigo)
-
     batalha.iniciar()
 
 
