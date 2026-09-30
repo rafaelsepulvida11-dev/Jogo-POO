@@ -5,7 +5,7 @@ from batalha import Batalha
 
 def main():
 
-    jogador = Guerreiro("Arthur")
+    jogador = Guerreiro("Jogador")
 
     inimigo = Inimigo(
         nome="Goblin",
