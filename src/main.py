@@ -6,29 +6,32 @@ if __package__ is None or __package__ == "":
 
 from src.batalha import Batalha
 from src.guerreiro import Guerreiro
-from src.inimigo import Inimigo
+from src.inimigo import BruxoFinalBoss, Dragao, Goblin
 from src.mago import Mago
+from src.arqueiro import Arqueiro
 
 
 def main():
     print("Escolha a classe do jogador:")
     print("1 - Guerreiro")
     print("2 - Mago")
+    print("3 - Arqueiro")
     escolha = input("Opção: ")
 
     if escolha == "2":
         jogador = Mago()
+    elif escolha == "3":
+        jogador = Arqueiro("Legolas")
     else:
         jogador = Guerreiro()
 
-    inimigo = Inimigo(
-        nome="Goblin",
-        vida=100,
-        ataque=15,
-        defesa=5
-    )
+    inimigos = [
+        Goblin("Goblin"),
+        Dragao("Dragão"),
+        BruxoFinalBoss("Bruxo Final Boss"),
+    ]
 
-    batalha = Batalha(jogador, inimigo)
+    batalha = Batalha(jogador, inimigos)
     batalha.iniciar()
 
 

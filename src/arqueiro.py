@@ -1,4 +1,4 @@
-from personagem import Personagem
+from src.personagem import Personagem
 
 
 class Arqueiro(Personagem):
@@ -6,9 +6,9 @@ class Arqueiro(Personagem):
     def __init__(self, nome):
         super().__init__(
             nome=nome,
-            vida=150,
-            ataque=20,
-            defesa=15
+            vida=70,
+            ataque=40,
+            defesa=5
         )
 
     def atacar(self, alvo):
