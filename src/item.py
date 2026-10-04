@@ -1,13 +1,17 @@
 class Item:
 
-    def __init__(self, nome, valor):
+    def __init__(self, nome, valor, quantidade=1):
         self.nome = nome
         self.valor = valor
-        self.usado = False
+        self.quantidade = quantidade
+
+    @property
+    def usado(self):
+        return self.quantidade == 0
 
     def usar(self, personagem):
-        if self.usado:
-            print(f"{self.nome} já foi usado.")
+        if self.quantidade <= 0:
+            print(f"Você não tem mais {self.nome.lower()}.")
             return
 
         vida_anterior = personagem.vida
@@ -20,14 +24,16 @@ class Item:
             print(f"{personagem.nome} já está com a vida cheia.")
             return
 
-        self.usado = True
+        self.quantidade -= 1
         vida_recuperada = personagem.vida - vida_anterior
         print(
             f"{personagem.nome} usou {self.nome} e recuperou "
-            f"{vida_recuperada} de vida!"
+            f"{vida_recuperada} de vida! Restam {self.quantidade}."
         )
+
+
 class PocaoDeVida(Item):
     """Poção que recupera 20 de vida."""
 
-    def __init__(self):
-        super().__init__("Poção de Vida", 20)
+    def __init__(self, quantidade=1):
+        super().__init__("Poção de Vida", 20, quantidade)

@@ -12,27 +12,36 @@ from src.arqueiro import Arqueiro
 
 
 def main():
-    print("Escolha a classe do jogador:")
-    print("1 - Guerreiro")
-    print("2 - Mago")
-    print("3 - Arqueiro")
-    escolha = input("Opção: ")
+    while True:
+        print("\n" + "=" * 48)
+        print("             A LENDA DOS HERÓIS")
+        print("=" * 48)
+        print("Uma jornada perigosa começa...")
+        print("\nEscolha seu personagem:")
+        print("  [1] Guerreiro - resistente e poderoso")
+        print("  [2] Mago      - domina a magia")
+        print("  [3] Arqueiro  - especialista em flechas")
+        escolha = input("\nDigite 1, 2 ou 3: ").strip()
 
-    if escolha == "2":
-        jogador = Mago()
-    elif escolha == "3":
-        jogador = Arqueiro("Legolas")
-    else:
-        jogador = Guerreiro()
+        if escolha == "1":
+            jogador = Guerreiro()
+        elif escolha == "2":
+            jogador = Mago()
+        elif escolha == "3":
+            jogador = Arqueiro("Legolas")
+        else:
+            print("Opção inválida. Escolha 1, 2 ou 3.")
+            continue
 
-    inimigos = [
-        Goblin("Goblin"),
-        Dragao("Dragão"),
-        BruxoFinalBoss("Bruxo Final Boss"),
-    ]
+        inimigos = [
+            Goblin("Goblin"),
+            Dragao("Dragão"),
+            BruxoFinalBoss("Bruxo Final Boss"),
+        ]
 
-    batalha = Batalha(jogador, inimigos)
-    batalha.iniciar()
+        batalha = Batalha(jogador, inimigos)
+        if not batalha.iniciar():
+            break
 
 
 if __name__ == "__main__":
