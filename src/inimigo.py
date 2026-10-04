@@ -11,14 +11,14 @@ class Inimigo(Personagem):
             ataque=ataque,
             defesa=defesa
         )
-        self.pocao = PocaoDeVida()
+        self.pocao = PocaoDeVida(quantidade=1)
 
     def atacar(self, alvo):
         print(f"{self.nome} atacou {alvo.nome}!")
         alvo.receber_dano(self.ataque)
 
     def realizar_turno(self, alvo):
-        if self.vida <= self.vida_maxima / 2 and not self.pocao.usado:
+        if self.vida <= self.vida_maxima / 2 and self.pocao.quantidade > 0:
             self.pocao.usar(self)
         else:
             self.atacar(alvo)
@@ -27,7 +27,7 @@ class BruxoFinalBoss(Inimigo):
     def __init__(self, nome):
         super().__init__(
             nome=nome,
-            vida=150,
+            vida=110,
             ataque=25,
             defesa=10
         )
@@ -70,7 +70,7 @@ class Dragao(Inimigo):
         super().__init__(
             nome=nome,
             vida=110,
-            ataque=45,
+            ataque=30,
             defesa=0
         )
         self.mana = 30
@@ -90,6 +90,6 @@ class Dragao(Inimigo):
             return
 
         self.mana -= custo
-        dano = self.ataque + 30
+        dano = self.ataque + 20
         print(f"{self.nome} lançou Bola de Fogo em {alvo.nome}! (Mana restante: {self.mana})")
         alvo.receber_dano(dano)

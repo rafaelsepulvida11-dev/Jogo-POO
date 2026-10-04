@@ -6,7 +6,7 @@ class Batalha:
     def __init__(self, jogador, inimigos):
         self.jogador = jogador
         self.inimigos = inimigos
-        self.item = PocaoDeVida()
+        self.item = PocaoDeVida(quantidade=3)
 
     def iniciar(self):
 
@@ -29,7 +29,10 @@ class Batalha:
 
                 if hasattr(self.jogador, "usar_magia"):
                     print("2 - Usar magia")
-                    print("3 - Usar item")
+                    print(
+                        f"3 - Usar item "
+                        f"(Poção de Vida - Quantidade: {self.item.quantidade})"
+                    )
                     print("4 - Fugir")
                     opcao = input("Escolha uma opção: ")
 
@@ -45,12 +48,40 @@ class Batalha:
                         self.item.usar(self.jogador)
                     elif opcao == "4":
                         print("Você fugiu da batalha!")
-                        return
+                        return True
+                    else:
+                        print("Opção inválida.")
+                        continue
+                elif hasattr(self.jogador, "atirar_flecha"):
+                    print("2 - Atirar flecha")
+                    print(
+                        f"3 - Usar item "
+                        f"(Poção de Vida - Quantidade: {self.item.quantidade})"
+                    )
+                    print("4 - Fugir")
+                    opcao = input("Escolha uma opção: ")
+
+                    if opcao == "1":
+                        self.jogador.atacar(inimigo)
+                        if inimigo.esta_vivo():
+                            inimigo.realizar_turno(self.jogador)
+                    elif opcao == "2":
+                        self.jogador.atirar_flecha(inimigo)
+                        if inimigo.esta_vivo():
+                            inimigo.realizar_turno(self.jogador)
+                    elif opcao == "3":
+                        self.item.usar(self.jogador)
+                    elif opcao == "4":
+                        print("Você fugiu da batalha!")
+                        return True
                     else:
                         print("Opção inválida.")
                         continue
                 else:
-                    print("2 - Usar item")
+                    print(
+                        f"2 - Usar item "
+                        f"(Poção de Vida - Quantidade: {self.item.quantidade})"
+                    )
                     print("3 - Fugir")
                     opcao = input("Escolha uma opção: ")
 
@@ -62,7 +93,7 @@ class Batalha:
                         self.item.usar(self.jogador)
                     elif opcao == "3":
                         print("Você fugiu da batalha!")
-                        return
+                        return True
                     else:
                         print("Opção inválida.")
                         continue

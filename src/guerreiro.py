@@ -7,7 +7,7 @@ class Guerreiro(Personagem):
         super().__init__(
             nome="Arthur",
             vida=120,
-            ataque=20,
+            ataque=50,
             defesa=15
         )
 

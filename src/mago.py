@@ -28,15 +28,15 @@ class Mago(Personagem):
         self.mana -= 15
         chance = random.randint(1, 10)
 
-        if chance == 1:
-            print(f"{self.nome} errou a magia em {alvo.nome}!")
-            return
-
         if chance >= 8:
-            dano = self.ataque * 2
+            dano = self.ataque + 50
             print(f"{self.nome} lançou uma magia crítica em {alvo.nome} e causou {dano} de dano!")
         else:
-            dano = self.ataque + 10
+            dano = self.ataque + 25
             print(f"{self.nome} lançou magia em {alvo.nome} e causou {dano} de dano.")
 
         alvo.receber_dano(dano)
+
+    def mostrar_status(self):
+        super().mostrar_status()
+        print(f"Mana: {self.mana} | Usos de magia restantes: {self.mana // 15}")
