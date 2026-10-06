@@ -44,5 +44,11 @@ def main():
             break
 
 
+def main_grafico():
+    from src.interface import InterfacePygame
+
+    InterfacePygame().executar()
+
+
 if __name__ == "__main__":
-    main()
+    main_grafico()
